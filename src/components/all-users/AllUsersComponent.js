@@ -4,7 +4,6 @@ import UserComponent from "../user/UserComponent";
 class AllUsersComponent extends Component {
 
     state = {users: [], chosenUser: null};
-    flag = false
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')

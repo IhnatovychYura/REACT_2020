@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 class PostComponent extends Component {
     render() {
 
-        let {post} = this.props
+        let {post, selectThisPost} = this.props
 
         return (
             <div>
                 {post.id} - {post.title}
-                <button>Show this post</button>
+                <button onClick={() => selectThisPost(post.id)}>Show this post</button>
             </div>
         );
     }

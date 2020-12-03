@@ -3,12 +3,12 @@ import React, {Component} from 'react';
 class CommentComponent extends Component {
     render() {
 
-        let {comment} = this.props
+        let {comment, selectThisComment} = this.props
 
         return (
             <div>
                 {comment.id} - {comment.name}
-                <button>Show this comment</button>
+                <button onClick={()=>selectThisComment(comment.id)}>Show this comment</button>
             </div>
         );
     }
