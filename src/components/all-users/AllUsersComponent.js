@@ -3,7 +3,8 @@ import UserComponent from "../user/UserComponent";
 
 class AllUsersComponent extends Component {
 
-    state = {users: []};
+    state = {users: [], chosenUser: null};
+    flag = false
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
@@ -13,17 +14,35 @@ class AllUsersComponent extends Component {
             });
     }
 
+    selectThisUser = (id) => {
+        let chosenUser = this.state.users.find(value => value.id === id);
+        this.setState({chosenUser})
+    }
+
     render() {
 
-        let {users} = this.state
+        let {users, chosenUser} = this.state
 
         return (
             <div>
                 <h1>All Users Page</h1>
 
                     {
-                        users.map(value => (<UserComponent user={value} key={value.id}/>))
+                        users.map(value => (<UserComponent
+                            user={value}
+                            key={value.id}
+                            selectThisUser={this.selectThisUser}/>))
                     }
+            <hr/>
+                {
+                    chosenUser &&
+                    (<p>
+                        {chosenUser.name} -
+                        {chosenUser.email} -
+                        {JSON.stringify(chosenUser.address)} -
+                        {chosenUser.phone}
+                    </p>)
+                }
 
             </div>
         );
