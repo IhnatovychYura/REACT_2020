@@ -210,68 +210,6 @@ class App extends Component {
             address: {city: 'Lviv', street: 'Shevchenko', number: 121}
         }];
 
-    avtopark = [{
-        producer: 'bmw',
-        power: 230,
-        owner: {name: 'Max', age: 30, experience: 17},
-        price: 25000,
-        year: 2017
-    }, {
-        producer: 'mercedes',
-        power: 160,
-        owner: {name: 'Yura', age: 25, experience: 7},
-        price: 5000,
-        year: 1998
-    }, {
-        producer: 'mercedes',
-        power: 400,
-        owner: {name: 'Zhora', age: 33, experience: 4},
-        price: 35000,
-        year: 2017
-    }, {
-        producer: 'bmw',
-        power: 180,
-        owner: {name: 'Ded', age: 78, experience: 50},
-        price: 10000,
-        year: 2012
-    }, {
-        producer: 'subaru',
-        power: 190,
-        owner: {name: 'Shumaher', age: 35, experience: 30},
-        price: 4000,
-        year: 1990
-    }, {
-        producer: 'honda',
-        power: 100,
-        owner: {name: 'Zenyk', age: 44, experience: 30},
-        price: 1000,
-        year: 1989
-    }, {
-        producer: 'lexus',
-        power: 200,
-        owner: {name: 'Mazhor', age: 50, experience: 30},
-        price: 55000,
-        year: 2019
-    }, {
-        producer: 'Ferrari',
-        power: 100500,
-        owner: {name: 'Portniagin', age: 39, experience: 20},
-        price: 155000,
-        year: 2018
-    }, {
-        producer: 'subaru',
-        power: 199,
-        owner: {name: 'Stepan', age: 32, experience: 15},
-        price: 15000,
-        year: 2010
-    }, {
-        producer: 'lanus',
-        power: 60,
-        owner: {name: 'Myron', age: 40, experience: 20},
-        price: 100,
-        year: 1998
-    }]
-
     render() {
         return (
             <div>
