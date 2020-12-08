@@ -8,11 +8,9 @@ class AllCommentsComponent extends Component {
 
     state = {comments: [], chosenComment: null}
 
-    componentDidMount() {
-        this.commentService.getAllComments()
-            .then(value => {
-                this.setState({comments: value});
-            })
+    async componentDidMount() {
+        let comments = await this.commentService.getAllComments()
+        this.setState({comments: comments});
     }
 
     selectThisComment = (id) => {

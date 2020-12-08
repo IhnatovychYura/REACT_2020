@@ -16,13 +16,18 @@ class App extends Component {
             <Router>
                 <div>
                     <div>
-                        <Link to={'/users'}> users </Link>
+                        <Link to={'/users'}> Users </Link>
                     </div>
 
                     <div>
-                        <Link to={'/posts'}> posts </Link>
+                        <Link to={'/posts'}> Posts </Link>
                     </div>
 
+                    <div>
+                        <Link to={'/comments'}> Comments </Link>
+                    </div>
+
+                    <hr/>
                     <Switch>
                         {/*/////////////////// Variant запису ////////////////////////*/}
                         {/*<Route path={'/users'} component={AllUsersComponent}/>*/}
@@ -36,12 +41,14 @@ class App extends Component {
                             return <AllPostsComponent/>;
                         }}/>
 
+                        <Route path={'/comments'} render={()=>{
+                            return <AllCommentsComponent/>;
+                        }}/>
                     </Switch>
+                    <hr/>
 
                     {/*<AllUsersComponent/>*/}
-
                     {/*<AllPostsComponent/>*/}
-
                     {/*<AllCommentsComponent/>*/}
 
                 </div>

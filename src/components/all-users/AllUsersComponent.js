@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import UserComponent from "../user/UserComponent";
 import UserService from "../../services/UserService";
+import "./AllUsers.css";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    withRouter
+} from "react-router-dom";
 
 class AllUsersComponent extends Component {
 
@@ -38,16 +46,25 @@ class AllUsersComponent extends Component {
                         key={value.id}
                         selectThisUser={this.selectThisUser}/>))
                 }
-                <hr/>
-                {
-                    chosenUser &&
-                    (<p>
-                        Name: {chosenUser.name} <br/>
-                        E-mail: {chosenUser.email}<br/>
-                        Address: {JSON.stringify(chosenUser.address)}<br/>
-                        Phone number: {chosenUser.phone}<br/>
-                    </p>)
-                }
+               <div className={'nest'}>
+
+                   {/*<Switch>*/}
+                   {/*    <Route path={'/users/:id'} render={()=>{*/}
+                   {/*        return */}
+                   {/*    }}/>*/}
+                   {/*</Switch>*/}
+
+                   {
+                       chosenUser &&
+                       (<p>
+                           Name: {chosenUser.name} <br/>
+                           E-mail: {chosenUser.email}<br/>
+                           Address: {JSON.stringify(chosenUser.address)}<br/>
+                           Phone number: {chosenUser.phone}<br/>
+                       </p>)
+                   }
+               </div>
+
 
             </div>
         );
