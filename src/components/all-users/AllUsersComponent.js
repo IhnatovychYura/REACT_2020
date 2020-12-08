@@ -26,20 +26,20 @@ class AllUsersComponent extends Component {
             <div>
                 <h1>All Users Page</h1>
 
-                    {
-                        users.map(value => (<UserComponent
-                            user={value}
-                            key={value.id}
-                            selectThisUser={this.selectThisUser}/>))
-                    }
-            <hr/>
+                {
+                    users.map(value => (<UserComponent
+                        user={value}
+                        key={value.id}
+                        selectThisUser={this.selectThisUser}/>))
+                }
+                <hr/>
                 {
                     chosenUser &&
                     (<p>
-                        {chosenUser.name} -
-                        {chosenUser.email} -
-                        {JSON.stringify(chosenUser.address)} -
-                        {chosenUser.phone}
+                        Name: {chosenUser.name} <br/>
+                        E-mail: {chosenUser.email}<br/>
+                        Address: {JSON.stringify(chosenUser.address)}<br/>
+                        Phone number: {chosenUser.phone}<br/>
                     </p>)
                 }
 
