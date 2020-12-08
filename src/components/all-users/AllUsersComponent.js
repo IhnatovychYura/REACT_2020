@@ -1,22 +1,28 @@
 import React, {Component} from 'react';
 import UserComponent from "../user/UserComponent";
+import UserService from "../../services/UserService";
 
 class AllUsersComponent extends Component {
 
+    userService = new UserService();
+
     state = {users: [], chosenUser: null};
 
-    componentDidMount() {
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(value => value.json())
-            .then(usersFromAPI => {
-                this.setState({users: usersFromAPI});
-            });
+    async componentDidMount() {
+        let users = await this.userService.getAllUsers()
+            this.setState({users: users});
     }
 
     selectThisUser = (id) => {
-        let chosenUser = this.state.users.find(value => value.id === id);
-        this.setState({chosenUser})
-    }
+        this.userService.getUserById(id)
+            .then(value => this.setState({chosenUser: value}));
+    };
+
+    // ///////////////// Старий Варіант ////////////////////
+    // selectThisUser = (id) => {
+    //     let chosenUser = this.state.users.find(value => value.id === id);
+    //     this.setState({chosenUser})
+    // }
 
     render() {
 
