@@ -15,17 +15,20 @@ class App extends Component {
         return (
             <Router>
                 <div>
-                    <div>
-                        <Link to={'/users'}> Users </Link>
-                    </div>
+                    <ul>
+                        <li>
+                            <Link to={'/users'}> Users </Link>
+                        </li>
 
-                    <div>
-                        <Link to={'/posts'}> Posts </Link>
-                    </div>
+                        <li>
+                            <Link to={'/posts'}> Posts </Link>
+                        </li>
 
-                    <div>
-                        <Link to={'/comments'}> Comments </Link>
-                    </div>
+                        <li>
+                            <Link to={'/comments'}> Comments </Link>
+                        </li>
+                    </ul>
+
 
                     <hr/>
                     <Switch>

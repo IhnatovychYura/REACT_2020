@@ -6,13 +6,19 @@ class UserService {
             .then(value => value.json())
     }
 
-    getUserById(id){
-        return fetch(this.url + `/${id}`)
+    async getUserById(id) {
+        return await fetch(this.url + `/${id}`)
             .then(value => value.json())
-            .then(userFromAPI => {
-                return userFromAPI
-            });
     }
+
+
+    // getUserById(id){
+    //     return fetch(this.url + `/${id}`)
+    //         .then(value => value.json())
+    //         .then(userFromAPI => {
+    //             return userFromAPI
+    //         });
+    // }
 
 }
 

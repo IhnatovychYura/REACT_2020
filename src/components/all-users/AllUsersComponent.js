@@ -2,73 +2,48 @@ import React, {Component} from 'react';
 import UserComponent from "../user/UserComponent";
 import UserService from "../../services/UserService";
 import "./AllUsers.css";
+import FullUserComponent from "../fullUser/FullUserComponent";
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
-    Link,
     withRouter
 } from "react-router-dom";
 
 class AllUsersComponent extends Component {
 
     userService = new UserService();
-
-    state = {users: [], chosenUser: null};
+    state = {users: []};
 
     async componentDidMount() {
         let users = await this.userService.getAllUsers()
-            this.setState({users: users});
+        this.setState({users: users});
     }
-
-    selectThisUser = (id) => {
-        this.userService.getUserById(id)
-            .then(value => this.setState({chosenUser: value}));
-    };
-
-    // ///////////////// Старий Варіант ////////////////////
-    // selectThisUser = (id) => {
-    //     let chosenUser = this.state.users.find(value => value.id === id);
-    //     this.setState({chosenUser})
-    // }
 
     render() {
 
-        let {users, chosenUser} = this.state
+        let {users} = this.state
+        let {match: {url}} = this.props
 
         return (
             <div>
                 <h1>All Users Page</h1>
 
-                {
-                    users.map(value => (<UserComponent
-                        user={value}
-                        key={value.id}
-                        selectThisUser={this.selectThisUser}/>))
-                }
-               <div className={'nest'}>
+                { users.map(value => (<UserComponent user={value} key={value.id}/>)) }
 
-                   {/*<Switch>*/}
-                   {/*    <Route path={'/users/:id'} render={()=>{*/}
-                   {/*        return */}
-                   {/*    }}/>*/}
-                   {/*</Switch>*/}
+                <div className={'nest'}>
+                    <Switch>
+                        <Route path={url + '/:id'} render={(props) => {
+                            console.log(props)
+                            let {match: {params: {id}}} = props
+                            return <FullUserComponent id={id} key={id}/>;
+                        }}/>
 
-                   {
-                       chosenUser &&
-                       (<p>
-                           Name: {chosenUser.name} <br/>
-                           E-mail: {chosenUser.email}<br/>
-                           Address: {JSON.stringify(chosenUser.address)}<br/>
-                           Phone number: {chosenUser.phone}<br/>
-                       </p>)
-                   }
-               </div>
-
+                    </Switch>
+                </div>
 
             </div>
         );
     }
 }
 
-export default AllUsersComponent;
+export default withRouter(AllUsersComponent);

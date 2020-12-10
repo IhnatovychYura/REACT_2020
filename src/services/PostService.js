@@ -6,12 +6,9 @@ class PostService {
             .then(value => value.json())
     }
 
-    getPostById(id){
-        return fetch(this.url + `/${id}`)
+   async getPostById(id){
+        return await fetch(this.url + `/${id}`)
             .then(value => value.json())
-            .then(postFromAPI => {
-                return postFromAPI
-            });
     }
 }
 
