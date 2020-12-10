@@ -1,6 +1,14 @@
 import React, {Component} from 'react';
 import CommentComponent from "../comment/CommentComponent";
 import CommentService from "../../services/CommentService";
+import "./AllComments.css"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    withRouter
+} from "react-router-dom";
 
 class AllCommentsComponent extends Component {
 
@@ -34,6 +42,14 @@ class AllCommentsComponent extends Component {
                 }
 
                 <hr/>
+                <div className={'nest'}>
+
+                    {/*<Switch>*/}
+                    {/*    <Route path={'/users/:id'} render={()=>{*/}
+                    {/*        return */}
+                    {/*    }}/>*/}
+                    {/*</Switch>*/}
+
                 {
                     chosenComment &&
                     (<p>
@@ -43,6 +59,7 @@ class AllCommentsComponent extends Component {
                         Body: {chosenComment.body}<br/>
                     </p>)
                 }
+                </div>
             </div>
         );
     }
