@@ -1,24 +1,28 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {Context} from "../../services/ContextService";
 import {
     Link,
     withRouter
 } from "react-router-dom";
 
-class UserComponent extends Component {
+function UserComponent(props) {
+    const {user, match: {url}} = props
+    console.log(user)
 
-    render() {
+    return (
+        <div>
+            {user.id} - {user.name} -
 
-        let {user, match: {url}} = this.props;
+            <Context.Consumer>
+                {(value) => value}
+            </Context.Consumer>
 
-        return (
-            <div>
-                {user.id} - {user.name} -
-                <Link to={`${url}/${user.id}`}>
-                    <button>Show this user</button>
-                </Link>
-            </div>
-        );
-    }
+            <Link to={`${url}/${user.id}`}>
+                <button>Show this user</button>
+            </Link>
+        </div>
+
+    );
 }
 
 export default withRouter(UserComponent);
