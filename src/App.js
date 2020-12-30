@@ -3,6 +3,7 @@ import AllUsersComponent from "./components/all-users/AllUsersComponent";
 import AllPostsComponent from "./components/all-posts/AllPostsComponent";
 import AllCommentsComponent from "./components/all-comments/AllCommentsComponent";
 import {Context} from "./services/ContextService";
+import HooksComponent from "./components/hooks/HooksComponent";
 import {
     BrowserRouter as Router,
     Switch,
@@ -29,6 +30,10 @@ class App extends Component {
                             <li>
                                 <Link to={'/comments'}> Comments </Link>
                             </li>
+
+                            <li>
+                                <Link to={'/hooks'}> Hooks </Link>
+                            </li>
                         </ul>
 
 
@@ -48,6 +53,10 @@ class App extends Component {
 
                             <Route path={'/comments'} render={()=>{
                                 return <AllCommentsComponent/>;
+                            }}/>
+
+                            <Route path={'/hooks'} render={()=>{
+                                return <HooksComponent/>;
                             }}/>
                         </Switch>
                         <hr/>
