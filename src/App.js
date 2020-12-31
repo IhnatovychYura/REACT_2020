@@ -4,6 +4,7 @@ import AllPostsComponent from "./components/all-posts/AllPostsComponent";
 import AllCommentsComponent from "./components/all-comments/AllCommentsComponent";
 import {Context} from "./services/ContextService";
 import HooksComponent from "./components/hooks/HooksComponent";
+import ReduxComponent from "./components/redux/ReduxComponent";
 import {
     BrowserRouter as Router,
     Switch,
@@ -34,6 +35,9 @@ class App extends Component {
                             <li>
                                 <Link to={'/hooks'}> Hooks </Link>
                             </li>
+                            <li>
+                                <Link to={'/redux'}> Redux </Link>
+                            </li>
                         </ul>
 
 
@@ -57,6 +61,10 @@ class App extends Component {
 
                             <Route path={'/hooks'} render={()=>{
                                 return <HooksComponent/>;
+                            }}/>
+
+                            <Route path={'/redux'} render={()=>{
+                                return <ReduxComponent/>;
                             }}/>
                         </Switch>
                         <hr/>

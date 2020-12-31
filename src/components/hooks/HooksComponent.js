@@ -1,15 +1,20 @@
-import React, {useState, useEffect, useReducer} from 'react';
+import React, {useState, useEffect, useReducer, useMemo} from 'react';
+import HooksTwoComponent from "../hooks-two/HooksTwoComponent";
+import MemoComponent from "../memo/MemoComponent";
 
 function HooksComponent() {
 
     //////////// ========= useState ======= ////////////////
     const counterData = useState(0);
-    console.log(counterData);
+    useMemo(() => {
+        return console.log('що лежить у useState:', counterData);
+    }, []);
+
 
     let [count, setCount] = useState(0);
     let [todo, setTodo] = useState(null);
     let [counter, setCounter] = useState(0);
-
+    let [isVisible, setIsVisible] = useState(false);
 
     //////////// ========= useEffect ======= ////////////////
     // Подібно до componentDidMount та componentDidUpdate:
@@ -18,16 +23,15 @@ function HooksComponent() {
         document.title = `Ви натиснули ${count} разів`;
     });
 
-    useEffect(() => {
-        console.log("I was called")
-    }, [])
+    // useEffect(() => {
+    //     console.log("I was called")
+    // }, [])
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
             .then(response => response.json())
             .then(json => setTodo(json))
     }, [count])
-
 
     //////////// ========= useReducer ======= ////////////////
     const reducer = (state, action) => {
@@ -83,6 +87,19 @@ function HooksComponent() {
         dispatch({type: "CHANGE_TODO_TITLE", payload: Math.random()})
     }
 
+    //////////// ========= useMemo ======= ////////////////
+    //  Виконується лише раз, при іншому рендері не повторюється //
+    const [arr, setArr] = useState([1,2,3,4,55,65,91,101,2000])
+
+    // стандартна змінна яка буде постійно показуватись при будь-якому рендері
+    const totalPrice = arr.reduce((acc, el) => (acc += el), 0);
+    console.log(totalPrice);
+
+    // змінна юзМемо яка буде мінятись тільки при тих рендерах коли відбулась зміна
+    const totalPrice1 = useMemo(() => {
+        return arr.reduce((acc, el) => (acc += el), 0);
+    }, [arr]);
+
     //////////////// ======  ====== /////////////////////
     const onCLickIncrement = () => {
         setCount(count + 1)
@@ -122,10 +139,20 @@ function HooksComponent() {
                     <h1>From useReduce</h1>
                     <h2>{state.id}</h2>
                     <h2>{state.title}</h2>
-                    {console.log(state.completed)}
+                    {console.log('Статус із API:', state.completed)}
                 </div>
             )
             }
+            <hr/>
+
+            <h1>useEffect as compWillUnMount & useMemo</h1>
+            <h3>total count from useMemo {totalPrice1}</h3>
+            <button onClick={() => setArr([...arr, Math.random()])}>add to Total Price</button>
+            <button onClick={() => setIsVisible(!isVisible)}> toggle </button>
+            {isVisible && <HooksTwoComponent />}
+
+            <hr/>
+            {isVisible && <MemoComponent />}
         </div>
     );
 }
