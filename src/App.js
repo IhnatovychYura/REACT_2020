@@ -3,8 +3,8 @@ import AllUsersComponent from "./components/all-users/AllUsersComponent";
 import AllPostsComponent from "./components/all-posts/AllPostsComponent";
 import AllCommentsComponent from "./components/all-comments/AllCommentsComponent";
 import {Context} from "./services/ContextService";
-import HooksComponent from "./components/hooks/HooksComponent";
-import ReduxComponent from "./components/redux/ReduxComponent";
+import HooksComponent from "./components/hooks-component/HooksComponent";
+import ReduxComponent from "./components/redux-component/ReduxComponent";
 import {
     BrowserRouter as Router,
     Switch,

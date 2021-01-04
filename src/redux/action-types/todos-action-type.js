@@ -1,0 +1,3 @@
+export const SET_TODOS = 'SET_TODOS';
+export const TOGGLE_TODOS_STATUS = 'TOGGLE_TODOS_STATUS';
+export const REMOVE_TODOS = 'REMOVE_TODOS';
